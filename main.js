@@ -7,13 +7,12 @@ var players = [player1, player2];
 console.log(players)
 
 let currentPlayerIndex = 0;
-while (true) {
-    const currentPlayer = players[currentPlayerIndex];
-    
+
+function switchPlayer() {
     currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
- 
-player = currentPlayer
-}
+    return players[currentPlayerIndex];
+  }
+
  $('table td').click(function () {
   var rowIndex = $(this).parent().index();
   var cellIndex = $(this).index()
@@ -21,23 +20,23 @@ player = currentPlayer
     let rowIndex = 5;
     if (isRowFull(rowIndex, cellIndex)) {
       console.log(isRowFull(rowIndex));
-      coloring(rowIndex, cellIndex,player);
+      coloring(rowIndex, cellIndex,switchPlayer());
     } else {
       rowIndex = 4;
       if (isRowFull(rowIndex, cellIndex)) {
-        coloring(rowIndex, cellIndex,player);
+        coloring(rowIndex, cellIndex,switchPlayer());
       } else {
         rowIndex = 3;
         if (isRowFull(rowIndex, cellIndex)) {
-          coloring(rowIndex, cellIndex,player);
+          coloring(rowIndex, cellIndex,switchPlayer());
         } else {
           rowIndex = 2;
           if (isRowFull(rowIndex, cellIndex)) {
-            coloring(rowIndex, cellIndex,player);
+            coloring(rowIndex, cellIndex,switchPlayer());
           } else {
             rowIndex = 1;
             if (isRowFull(rowIndex, cellIndex)) {
-              coloring(rowIndex, cellIndex,player);
+              coloring(rowIndex, cellIndex,switchPlayer());
             }
           }
         }
@@ -61,5 +60,3 @@ function isRowFull(rowval,colval) {
     return false
   }
 }
-
-
